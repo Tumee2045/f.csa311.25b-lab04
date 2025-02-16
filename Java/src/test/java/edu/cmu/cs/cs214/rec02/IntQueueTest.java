@@ -53,19 +53,26 @@ public class IntQueueTest {
     @Test
     public void testNotEmpty() {
         // TODO: write your own unit test
-        fail("Test not implemented");
+        //10 gesen elementiig nemeed hooson uguig n shalgaj baina
+        mQueue.enqueue(10);
+        assertFalse(mQueue.isEmpty());
     }
 
     @Test
     public void testPeekEmptyQueue() {
         // TODO: write your own unit test
-        fail("Test not implemented");
+        ArrayIntQueue queue = new ArrayIntQueue();
+        assertNull(queue.peek()); 
     }
 
     @Test
     public void testPeekNoEmptyQueue() {
         // TODO: write your own unit test
-        fail("Test not implemented");
+        ArrayIntQueue queue = new ArrayIntQueue();
+        queue.enqueue(10);
+        queue.enqueue(20);
+        assertEquals(Integer.valueOf(10), queue.peek());
+        assertEquals(2, queue.size());
     }
 
     @Test
@@ -81,8 +88,14 @@ public class IntQueueTest {
     @Test
     public void testDequeue() {
         // TODO: write your own unit test
-        fail("Test not implemented");
-    }
+        ArrayIntQueue queue = new ArrayIntQueue();
+        queue.enqueue(10);
+        queue.enqueue(20);
+        assertEquals(Integer.valueOf(10), queue.dequeue());
+        assertEquals(1, queue.size()); 
+        assertEquals(Integer.valueOf(20), queue.peek());
+        assertEquals(Integer.valueOf(20), queue.dequeue());
+        }
 
     @Test
     public void testContent() throws IOException {
@@ -104,6 +117,28 @@ public class IntQueueTest {
             }
         }
     }
+    
+    @Test
+    public void testClear(){
+        ArrayIntQueue queue = new ArrayIntQueue();
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.clear();
 
+    }
 
+    @Test
+    public void testEnsureCapacity() {
+        ArrayIntQueue queue = new ArrayIntQueue();
+        for (int i = 0; i < 10; i++) {
+            queue.enqueue(i);
+        }
+        queue.dequeue();
+        queue.dequeue();
+        queue.enqueue(10);
+        queue.enqueue(11);
+        queue.enqueue(12);
+        assertEquals(11, queue.size());
+        assertEquals(Integer.valueOf(2), queue.peek());
+    }    
 }
