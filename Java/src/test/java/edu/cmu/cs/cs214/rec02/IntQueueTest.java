@@ -48,6 +48,7 @@ public class IntQueueTest {
     public void testIsEmpty() {
         // This is an example unit test
         assertTrue(mQueue.isEmpty());
+        assertNull(mQueue.dequeue());
     }
 
     @Test
